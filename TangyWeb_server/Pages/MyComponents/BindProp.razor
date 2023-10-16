@@ -1,0 +1,26 @@
+﻿@page "/MyComponents/bindprop"
+<h3>Product</h3>
+Name:@Product.Name<br />
+Active:@Product.IsActive<br />
+Price: @Product.Price <br />
+This product is: @if (Product.IsActive)
+{
+    <p>Active</p>
+}
+else
+{
+    <p>InActive</p>
+}
+New Price: <input type="number" @bind-value="@Product.Price" @bind-value:event="oninput"/><br />
+@*New Price: <input type="number" @bind="@Product.Price" @bind:event="oninput"/>*@
+Active: <input type="checkbox" @bind-value="@Product.IsActive" @bind-value:event="oninput"/>
+
+@code {
+    Tangy_models.LearnBlazorModels.Demo_Product Product = new()
+        {
+            Id = 1,
+            Name = "Harry Potter",
+            IsActive = false,
+            Price = 10.99
+        };
+}
